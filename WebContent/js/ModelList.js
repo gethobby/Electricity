@@ -101,7 +101,7 @@ function findCheckedModelfile()
 		index++;
 	}
 	if(index<modelfiles.length){
-		alert(modelfiles[index].value);
+		//alert(modelfiles[index].value);
 		return modelfiles[index].value;
 	}
 	else return undefined;
