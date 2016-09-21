@@ -89,7 +89,7 @@ function createFileTR(FileName,FileId,FileSource,FileDescription)
 }
 /*
  * 寻找选中的模型文件
- * 返回：选中模型文件的ID
+ * 返回：选中模型文件的(ID,modelName)
  */
 function findCheckedModelfile()
 {
@@ -101,16 +101,26 @@ function findCheckedModelfile()
 		index++;
 	}
 	if(index<modelfiles.length){
-		//alert(modelfiles[index].value);
+		// alert(modelfiles[index].value);
 		return modelfiles[index].value;
 	}
 	else return undefined;
 }
+
 /*
  * 根据模型文件显示可用目标软件
  * */
+
+var isjianmo =false;
 function jianmo(){
-	var ModelfileID=findCheckedModelfile();
+    var modeid_name = findCheckedModelfile();
+    var arr = modeid_name.split(",");
+	var ModelfileID=arr[0];
+	var ModelfileName = arr[1];
+	//alert(ModelfileID+","+ModelfileName);
+	//接下来，先按照fileName把模型从存储节点机下载下来(本地磁盘文件后复制到webcontent),然后，调用socket发送到软件节点机
+	isjianmo = true;
+	downloadModelFile(ModelfileName);	
 	if(ModelfileID){
 		$.ajax({
 			type: "post",
@@ -279,10 +289,15 @@ function downloadModelFile(modelName) {
 		    			     success:function(str_response){
 		    			    	 if("success"==str_response)
 		    			    	 {
-		    			    		 alert("复制成功！");
+		    			    		 if (!isjianmo) {
+									 alert("复制成功！"); // 复制成功后，把webcontent里的压缩文件选择保存到本地
 		    			    		 var path = "/Electricity/Down/"+modelName.replace(/.\w+$/,"")+".zip";
 		    			    		 //alert(path);
 		    			    		 window.location.href=path;
+									}else {
+										isjianmo = false;
+									}
+		    			    		
 		    				  	 }
 		    			    	 else{alert("复制失败！");}
 		    			     }
@@ -336,7 +351,7 @@ function GetModelList() {
 function createModelTR(ModelID, FileName,SortPath,MatchSotf)
 {
 	 
-	var tdcol1template='<input name="model" type="radio" style="width: 20px" value="{{%modelID}}"><strong>NO.</strong>{{%modelID}}';
+	var tdcol1template='<input name="model" type="radio" style="width: 20px" value="{{%modelID}},{{%filename}}"><strong>NO.</strong>{{%modelID}}';
 	var tdcol2template='<a href="#" onclick="ModifyModelFileinfo(\'{{%modelID}}\')">{{%filename}}</a>' ;
 	var tdcol3template='{{%filepath}}';
 	var tdcol4template='{{%filesoft}}';
@@ -350,7 +365,7 @@ function createModelTR(ModelID, FileName,SortPath,MatchSotf)
 	var td4=document.createElement('td');
 	var td5=document.createElement('td');
 	
-	td1.innerHTML=new t(tdcol1template).render({modelID:ModelID});
+	td1.innerHTML=new t(tdcol1template).render({modelID:ModelID,filename:FileName});//
 	td2.innerHTML=new t(tdcol2template).render({modelID:ModelID,filename:FileName});
 	td3.innerHTML=new t(tdcol3template).render({filepath:SortPath});
 	td4.innerHTML=new t(tdcol4template).render({filesoft:MatchSotf});
