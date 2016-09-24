@@ -96,7 +96,7 @@ public class Util {
 	   }
 	  /**
 		 * 
-		 * @param cmd 服务器发出的命令：0表示上传，表示下载
+		 * @param cmd 服务器发出的命令：0表示上传，1表示下载
 		 * @param IP  节点机的IP(因为节点机socket是通信C端)
 		 * @param port 服务器端的socket的Port(为了方便，统一由config.txt确定)
 		 * @param filepath 要从节点机中下载下来的文件(包含后缀)

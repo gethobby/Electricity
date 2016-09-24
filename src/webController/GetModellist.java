@@ -50,7 +50,7 @@ public class GetModellist extends HttpServlet {
 			String nodeIP =request.getParameter("nodeIP"); 
 			mySQLConnector con=new mySQLConnector(nodeIP);
 			String filesummaryinfoSql="select fileID,模型文件,storepath,适用软件  "
-					+ "from modelinfo.fileinfo ";;
+					+ "from modelinfo.fileinfo ";
 			con.readyPreparedStatement(filesummaryinfoSql);
 			JSONArray Modelfiles=null;
 			try {
