@@ -120,6 +120,7 @@ function jianmo(){
 	//alert(ModelfileID+","+ModelfileName);
 	//接下来，先按照fileName把模型从存储节点机下载下来(本地磁盘文件后复制到webcontent),然后，调用socket发送到软件节点机
 	isjianmo = true;
+<<<<<<< HEAD
 	
 	downloadModelFile(ModelfileName);
 	var obj = document.getElementById("DB_NO"); //定位id
@@ -127,6 +128,9 @@ function jianmo(){
 	var nodeIP = obj.options[index].value; // 选中值
 	alert(ModelfileID+","+nodeIP);
 	
+=======
+	downloadModelFile(ModelfileName);	
+>>>>>>> 836cfaff0b772458ed3abb6047515d3ff2fe8ff4
 	if(ModelfileID){
 		$.ajax({
 			type: "post",
