@@ -30,12 +30,12 @@ public interface Gobal {
 	String NODE_COMMUNICATE_APP_SOFT="D:\\Electricity\\Electricity_Deploy\\ServersideControl.exe";
 	String RESULT_RECEIVE_APP_SOFT="D:\\Electricity\\Electricity_Deploy\\ResultServerSide.exe";
 	//存放从存储节点机接受的模型文件以及操作记录路径
-	String SERVER_RECV_CALLBACK = "D:\\Electricity\\ModelCallBack\\" ;
+	String SERVER_RECV_CALLBACK = "D:/Electricity/ModelCallBack/" ;
 	String SERVER_RECV_XML = "Result.xml";
 	//所有模型文件存放路径
-	String OBJECT_ROOT_DIR="D:\\Electricity\\ModelCallBack\\";
+	String OBJECT_ROOT_DIR="D:/Electricity/ModelCallBack/";
 	//所有图片存放路径
-	String PICTURE_ROOT_DIR="D:\\Electricity\\Pictures";
+	String PICTURE_ROOT_DIR="D:/Electricity/Pictures/";
 	
 	//存放snmp所需数据信息
 	String SERVER_SNMP_IP="udp:127.0.0.1/161";
