@@ -124,7 +124,7 @@ public class Util {
 			commons[0]=Gobal.NODE_COMMUNICATE_APP;
 			commons[1]=cmd;//"0:上传";
 			commons[2]=IP;//"127.0.0.1";
-			commons[3]=Integer.toString(port);//"6666";
+			commons[3]=Integer.toString(port);//"6000";
 			
 			if(filepath==null) commons[4]="NULL";
 			else commons[4]=filepath;//"D:\\file\\te stSN.txt";

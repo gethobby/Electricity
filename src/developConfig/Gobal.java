@@ -34,8 +34,9 @@ public interface Gobal {
 	String SERVER_RECV_XML = "Result.xml";
 	//所有模型文件存放路径
 	String OBJECT_ROOT_DIR="D:/Electricity/ModelCallBack/";
+	String OBJECT_ROOT_DIR_WIN="D:\\Electricity\\ModelCallBack\\";
 	//所有图片存放路径
-	String PICTURE_ROOT_DIR="D:/Electricity/Pictures/";
+	String PICTURE_ROOT_DIR="D:\\Electricity\\Pictures\\";
 	
 	//存放snmp所需数据信息
 	String SERVER_SNMP_IP="udp:127.0.0.1/161";

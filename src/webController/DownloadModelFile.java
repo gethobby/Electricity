@@ -50,9 +50,23 @@ public class DownloadModelFile extends HttpServlet {
 		ResultSet rs=con.executeQuery();
 		return rs;
 	}
+    protected void IfExistDeleteByMOdelID(int modelID) {
+    	  // 以下代码是删除softnode.fileinfo中可能存在的之前关于file的一条记录	
+    	  mySQLConnector local	 = new mySQLConnector();	   
+   		   System.out.println("如果存在，则删除模型ID= "+modelID+"对应记录");
+   		   String deletesql = "delete from softnode.fileinfo where fileID=?";
+   		   local.readyPreparedStatement(deletesql);
+   			local.setInt(1, modelID);
+   			if (local.executeUpdate()>0) {
+   				System.out.println("softnode.fileinfo原先存在一条记录，已删除");
+   			}else {
+   				System.out.println("softnode.fileinfo原先不存在一条记录，可以直接插入");
+   			}
     
+	}
+	
 	protected boolean InsertRecordToSoftNodeFileInfo(ResultSet rs) {
-		mySQLConnector local = new mySQLConnector();
+		mySQLConnector local = new mySQLConnector();		
 		
 		String insertSql="insert into softnode.fileinfo(fileID,模型文件,size,storepath,适用软件,简介) "
 				+ "values(?,?,?,?,?,?) ";
@@ -61,7 +75,11 @@ public class DownloadModelFile extends HttpServlet {
 			System.out.println("获取记录数"+rs.getRow());	
 			while (rs.next()) {	
 			 local.readyPreparedStatement(insertSql);
-			 local.setInt(1,rs.getInt("fileID"));
+			 
+			 int modelID = rs.getInt("fileID");
+			 IfExistDeleteByMOdelID(modelID);//如果存在则删除原先softnode.fileinfo表里的model
+			 local.setInt(1,modelID);
+			 
 			 local.setString(2,rs.getString("模型文件"));
 			 local.setInt(3,rs.getInt("size"));
 			 local.setString(4,Gobal.OBJECT_ROOT_DIR);

@@ -133,7 +133,7 @@ public class CreateNewRecord extends HttpServlet {
 			String modelFile = request.getParameter("modelName");
 			
 			file.setFileName(modelFile);
-			file.setStorePath(Gobal.NODE_OBJECT_DIR);//模型文件存储的位置，后续根据要求修改
+			file.setStorePath(Gobal.OBJECT_ROOT_DIR);//模型文件存储的位置，后续根据要求修改
 			file.setFileDescription(request.getParameter("modelDes"));
 		
 			String softlist="";
@@ -159,7 +159,7 @@ public class CreateNewRecord extends HttpServlet {
 				String username = (String) session.getAttribute("username");
 				String name = (username==null||username.equals(""))? "server":username;
 				System.out.println("用户"+name+",正在上传模型文件！");
-				if (Util.SendModelFile("0",nodeIP, Gobal.NODE_SOCKET_PORT,  Gobal.OBJECT_ROOT_DIR+modelFile, name)) {
+				if (Util.SendModelFile("0",nodeIP, Gobal.NODE_SOCKET_PORT,  Gobal.OBJECT_ROOT_DIR_WIN+modelFile, name)) {
 					if(file.recordInsert(nodeIP)){ 
 					System.out.println("upload Model File success");
 					response.getWriter().append("success");
