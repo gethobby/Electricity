@@ -38,8 +38,8 @@ else if (request.getAttribute("SavedNodeDBList") == null) {
 <div class="testing">
 	<header class="main">
 		<h1><strong>电磁数据</strong> 管理平台</h1>
-		<span class="button blue" style="margin-top: -23px; float: right; position: relative;" onclick="window.open('SearchModelFile.jsp')">查询</span>
-		<input type="text" value="模型名称" id="search">
+		<span class="button blue" style="margin-top: -23px; float: right; position: relative;" onclick="GetModelList()">查询</span>
+		<input  type="text" id="search">
 	</header>
 	<section class="user" >
 		<div class="profile-img">
@@ -262,6 +262,7 @@ function closenewObjectinfo(){
 	targetsection.previousElementSibling.style.display='';
 	targetsection.style.display='none';
 }
+
 </script>
 </body>
 </html>

@@ -327,13 +327,16 @@ function GetModelList() {
 	var index = obj.selectedIndex; // 选中索引
 	var nodeIP = obj.options[index].value; // 选中值
 	
+	var params = document.getElementById("search").value; // 模型查询条件
+	//alert(params);
+	
 	var tby = document.getElementById("filename"); //定位tbody
 	
 	if(nodeIP!=null){
 
 		$.ajax({   
 		     type: "POST",   
-		     url: "/Electricity/GetModellist?nodeIP="+nodeIP,   
+		     url: "/Electricity/GetModellist?nodeIP="+nodeIP+"&searchParams="+params,   
 		     //traditional: true,
 		     success:function(data){
 		    	 
