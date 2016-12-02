@@ -11,7 +11,7 @@ public class GirdfileList {
 
 	String checkedFileSql="select fileID,模型文件,storepath,适用软件  "
 			+ "from modelinfo.fileinfo ";
-	String SavedNodeDBSql="select nodeID,IPAddress  "
+	String SavedNodeDBSql="select nodeID,IPAddress,class  "
 			+ "from savednode.nodeinfo ";
 //	String unCheckedFileSql="select ID,filename from gridfile where verified=0;";
 //	String searchFileSql="select ID,filename from gridfile where filename LIKE ?;";

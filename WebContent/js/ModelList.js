@@ -296,14 +296,13 @@ function downloadModelFile(modelName) {
 		    			    	 if("success"==str_response)
 		    			    	 {
 		    			    		 if (!isjianmo) {
-									 alert("复制成功！"); // 复制成功后，把webcontent里的压缩文件选择保存到本地
+									 //alert("复制成功！"); // 复制成功后，把webcontent里的压缩文件选择保存到本地
 		    			    		 var path = "/Electricity/Down/"+modelName.replace(/.\w+$/,"")+".zip";
 		    			    		 //alert(path);
 		    			    		 window.location.href=path;
 									}else {
 										isjianmo = false;
-									}
-		    			    		
+									}		    			    		
 		    				  	 }
 		    			    	 else{alert("复制失败！");}
 		    			     }

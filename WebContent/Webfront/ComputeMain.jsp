@@ -40,7 +40,7 @@ else if (request.getAttribute("softlist") == null) {
 	<header class="main">
 		<h1><strong>电磁数据</strong> 管理平台</h1>
 		<span class="button blue" style="margin-top: -23px; float: right; position: relative;" onclick="searchSoft()">查询</span>
-		<input id="search"  type="text"  id="search">
+		<input id="search"  type="text"  >
 	</header>
 	<section class="user" >
 		<div class="profile-img">

@@ -86,7 +86,7 @@ else if (request.getAttribute("SavedNodeDBList") == null) {
 					<label>存储节点:</label> 
 					<select id="DB_NO">
 					   <c:forEach items="${SavedNodeDBList}" var="DB" varStatus="status">
-					        <option  value='${DB[1]}'>${DB[1]}</option>
+					        <option  value='${DB[1]}'>${DB[1]}--${DB[2]}</option>
 					    </c:forEach>
 					</select>
 						<button id="DB_Bnt" name="load" value="加载" class="right-btn" onclick="GetModelList()" style="font-size: 10px; background: #719e37;margin-top:-15px;width:60px">加载</button>				   

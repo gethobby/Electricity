@@ -119,9 +119,9 @@ public class DownloadModelFile extends HttpServlet {
 		        ResultSet rs = GetModelRecordByNodeIPAndModelName(nodeIP, modelName);
 		        if(InsertRecordToSoftNodeFileInfo(rs)){	
 		        	// 插入记录成功后，立即解压zip包
-		        	String modelZip = modelName.substring(0, modelName.lastIndexOf('.'))+".zip";
-		        	System.out.println("解压"+modelZip);
-		        	while(!(new File(Gobal.OBJECT_ROOT_DIR+modelZip).exists())){ 	          	   
+		        	//String modelZip = modelName.substring(0, modelName.lastIndexOf('.'))+".zip";
+		        	//System.out.println("解压"+modelZip);
+		        	while(!(new File(Gobal.OBJECT_ROOT_DIR+modelName).exists())){ 	          	   
 			        	  try {
 							Thread.sleep(100);
 						} catch (InterruptedException e) {
@@ -129,7 +129,7 @@ public class DownloadModelFile extends HttpServlet {
 							e.printStackTrace();
 						}
 		        	}		        	
-		        	Util.Unzip(Gobal.OBJECT_ROOT_DIR+modelZip, Gobal.OBJECT_ROOT_DIR);
+		        	//Util.Unzip(Gobal.OBJECT_ROOT_DIR+modelZip, Gobal.OBJECT_ROOT_DIR);
 		        	
 			    	System.out.println("download model file success and insert to table softnode.fileinfo success!");				
 				    response.getWriter().append("success");
