@@ -150,10 +150,11 @@ public class CreateNewRecord extends HttpServlet {
 			}
 			file.setObjectiveSoft(softlist);
 			if(!file.checkInsert(nodeIP)){
-				System.out.println("模型文件已经存在！");
-				response.getWriter().append("failed"+","+"模型文件已存在！");
+				//12-9
+				//System.out.println("模型文件已经存在！");
+				//response.getWriter().append("failed"+","+"模型文件已存在！");
+				file.IfExistDeleteModel(nodeIP, modelFile);
 			}
-			else{
 				// 先Socket上传文件成功到节点机后，再在对应的节点机MYSQL表中插入一条模型记录
 				HttpSession session=request.getSession();
 				String username = (String) session.getAttribute("username");
@@ -174,8 +175,6 @@ public class CreateNewRecord extends HttpServlet {
 					System.out.println("upload Model File failed!");
 					response.getWriter().append("failed"+","+"upload Model File failed！");
 				}
-							
-			}
 		}
 		if(recordtype!=null&&recordtype.equals("user"))
 		{

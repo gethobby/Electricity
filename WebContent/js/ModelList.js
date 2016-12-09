@@ -125,7 +125,7 @@ function jianmo(){
 	var obj = document.getElementById("DB_NO"); //定位id
 	var index = obj.selectedIndex; // 选中索引
 	var nodeIP = obj.options[index].value; // 选中值
-	alert(ModelfileID+","+nodeIP);
+	//alert(ModelfileID+","+nodeIP);
 	
 	if(ModelfileID){
 		$.ajax({
